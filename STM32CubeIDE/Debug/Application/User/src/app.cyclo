@@ -1,7 +1,7 @@
-../Application/User/src/app.cpp:203:6:void updateEnemy(uint8_t)	6
-../Application/User/src/app.cpp:265:6:void updateShipBullet(uint8_t)	4
-../Application/User/src/app.cpp:287:6:void updateEnemyBullet(uint8_t)	9
+../Application/User/src/app.cpp:203:6:void updateEnemy(uint8_t)	5
+../Application/User/src/app.cpp:246:6:void updateShipBullet(uint8_t)	4
+../Application/User/src/app.cpp:268:6:void updateEnemyBullet(uint8_t)	9
 ../Application/User/src/app.cpp:48:6:void gameTask(void*)	25
-../Application/User/src/app.cpp:323:6:void resetGameObjectsForNextRound()	3
-../Application/User/src/app.cpp:348:1:cpp)	4
-../Application/User/src/app.cpp:348:1:cpp)	4
+../Application/User/src/app.cpp:304:6:void resetGameObjectsForNextRound()	3
+../Application/User/src/app.cpp:329:1:cpp)	4
+../Application/User/src/app.cpp:329:1:cpp)	4

@@ -3,6 +3,8 @@
  */
 
 #include "Enemy.hpp"
+#include <math.h>
+
 Enemy::Enemy() {
 	// Khởi tạo kích thước mặc định cho đối tượng kẻ địch
 	this->width = 32;
@@ -16,6 +18,9 @@ Enemy::Enemy() {
 
   // Khởi tạo tốc độ bắn đạn của kẻ địch
   this->fireRate = FIRE_RATE;
+  
+  this->moveType = 0;
+  this->originX = 0;
 }
 
 Enemy::~Enemy() {
@@ -25,7 +30,7 @@ Enemy::~Enemy() {
 bool Enemy::update(uint8_t dt) {
 	// Kiểm tra xem kẻ địch có nằm ngoài khu vực màn hình hiển thị không
 	if(this->coordinateX < -this->width || this->coordinateX > 240 ||
-			this->coordinateY < -this->height || this->coordinateX > 320) {
+			this->coordinateY < -this->height - 10 || this->coordinateY > 320) {
 		// Nếu kẻ địch nằm ngoài màn hình, đặt trạng thái hiển thị thành "SHOULD_HIDE"
 		this->displayStatus = SHOULD_HIDE;
 
@@ -42,8 +47,13 @@ bool Enemy::update(uint8_t dt) {
 	if(this->moveRate > 0) return false;
 
 	// Cập nhật vị trí mới của kẻ địch dựa vào vận tốc hiện tại
-	this->coordinateX += this->velocityX;
 	this->coordinateY += this->velocityY;
+	if (this->moveType == 1) { // Đường hình sin
+		// originX là điểm neo, biên độ 50, chu kỳ 0.05
+		this->coordinateX = this->originX + (short)(50.0 * sin(this->coordinateY * 0.05));
+	} else { // Đi thẳng
+		this->coordinateX += this->velocityX;
+	}
 
 	// Đặt lại tốc độ di chuyển để chuẩn bị cho lần di chuyển tiếp theo
 	this->moveRate = MOVE_RATE;

@@ -222,34 +222,15 @@ void updateEnemy(uint8_t dt) {
 		if (HAL_RNG_GenerateRandomNumber(&hrng, &randValue) != HAL_OK) {
 			randValue = 0; // fallback if RNG fails
 		}
-		uint8_t randSpawn = randValue % 4; // 0..3
-		uint8_t randSide = (randValue >> 8) & 0x01; // 0 or 1
+		uint8_t randType = (randValue >> 8) & 0x01; // 0: đi thẳng, 1: đường sin
+		
+		ex = 30 + (randValue % 180); // Ngẫu nhiên x từ 30 đến 210
+		ey = -32; // Xuất phát từ trên cùng
+		vx = 0;   // Không di chuyển ngang cố định
+		vy = 1;   // Rơi xuống
 
-		if (randSide) {
-			ex = -32;
-			vx = 1;
-		} else {
-			ex = 240;
-			vx = -1;
-		}
-
-		switch (randSpawn) {
-		case 0:
-			ey = 42;
-			break;
-		case 1:
-			ey = 80;
-			break;
-		case 2:
-			ey = 120;
-			break;
-		case 3:
-			ey = 160;
-			break;
-		default:
-			ey = 42;
-			break;
-		}
+		enemy[i].moveType = randType;
+		enemy[i].originX = ex;
 
 		// Cập nhật thông tin của kẻ địch và hiển thị lên màn hình
 		enemy[i].updateCoordinate(ex, ey);

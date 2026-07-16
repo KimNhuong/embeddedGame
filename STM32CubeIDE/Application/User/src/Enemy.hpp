@@ -15,6 +15,8 @@ public:
 	virtual ~Enemy();
 	bool update(uint8_t dt);
 	bool updateBullet(uint8_t dt);
+	short moveType; // 0 for straight, 1 for sine wave
+	short originX;
 };
 
 #endif /* APPLICATION_USER_SRC_ENEMY_HPP_ */
