@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>MyApplication</name>
+	<comment></comment>
+	<projects>
+		<project>STM32F429I_DISCO_REV_D01</project>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+	</natures>
+</projectDescription>
